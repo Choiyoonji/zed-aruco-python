@@ -14,7 +14,7 @@ class ZedAruco:
         
         self.fx, self.fy, self.cx, self.cy, dist_coeffs_list = intrinsics
         self.camera_matrix = np.array([[self.fx, 0, self.cx], [0, self.fy, self.cy], [0, 0, 1]], dtype=np.float32)
-        self.dist_coeffs = np.array(dist_coeffs_list, dtype=np.float32)
+        self.dist_coeffs = np.zeros((5, 1), dtype=np.float32) # 왜곡이 보정되어 나오기 때문에 0으로 설정
 
         self.aruco_dict = cv2.aruco.getPredefinedDictionary(aruco_dict_type)
         self.aruco_params = cv2.aruco.DetectorParameters()
